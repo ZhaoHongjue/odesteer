@@ -7,7 +7,7 @@ import torch
 from transformers import GenerationConfig
 from lightning import seed_everything
 
-from odesteer.lm import HuggingFaceLM, batch_chat
+from odesteer.lm import HuggingFaceLM, batch_generate
 from odesteer.utils import get_project_dir
 from odesteer.utils.data import load_ultrafeedback_data, load_ultrafeedback_prompts
 
@@ -34,7 +34,7 @@ def main(cfg: DictConfig):
         print("→ Loading LLM & Fitting Steer Model ...")
         default_generation_config = GenerationConfig(
             max_new_tokens = 128, do_sample = True, temperature = 0.7,
-            top_p = 0.9, repetition_penalty = 1.1, seed = cfg.seed, 
+            top_p = 0.9, repetition_penalty = 1.1, no_repeat_ngram_size = 2, seed = cfg.seed, 
         )
         steer_model_kwargs = OmegaConf.to_container(cfg.steer.kwargs, resolve = True)
 
@@ -54,11 +54,8 @@ def main(cfg: DictConfig):
         print("→ Loading test prompts ...")
         prompts = load_ultrafeedback_prompts('test')
 
-        # Create messages for chat format
-        messages = [[{"role": "user", "content": prompt}] for prompt in prompts]
-
         print(f"→ Generating {len(prompts)} responses with T={cfg.steer.T} ...")
-        outputs = batch_chat(model, messages, T = cfg.steer.T, batch_size = cfg.batch_size)
+        outputs = batch_generate(model, prompts, T = cfg.steer.T, batch_size = cfg.batch_size)
         print(f"→ Generated {len(outputs)} outputs")
 
         print(f"\n→ Saving outputs to {filename} ...")
