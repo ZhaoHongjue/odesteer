@@ -122,7 +122,7 @@ class TqaGenEvaluator:
             detailed_eval_results_df['dist_3'] = dist_3
             detailed_eval_results_dir = eval_path.parent.parent / "detailed_eval_results" / model
             detailed_eval_results_dir.mkdir(parents = True, exist_ok = True)
-            detailed_eval_results_df.to_json(detailed_eval_results_dir / f"{model}-{steer_method}-TruthfulQA-seed42.jsonl", orient = "records", lines = True)
+            detailed_eval_results_df.to_json(detailed_eval_results_dir / f"{model}-{steer_method}-TruthfulQA-seed{args.seed}.jsonl", orient = "records", lines = True)
             
             # Add summary to evaluation DataFrame
             eval_df.loc[len(eval_df)] = [
