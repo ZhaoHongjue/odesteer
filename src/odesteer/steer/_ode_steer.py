@@ -3,6 +3,7 @@ Proposed method by our paper
 '''
 
 from abc import abstractmethod
+from typing import Literal
 
 import torch
 from torch import Tensor
@@ -14,8 +15,15 @@ from ..utils.kernels import NormedPolyClassifier
 
 
 class BaseODESteer(Steer):
-    def __init__(self, **kwargs):
+    def __init__(
+        self, 
+        solver: Literal['euler', 'midpoint', 'rk4'] = 'euler',
+        steps: int = 10,
+        **kwargs
+    ):
         super().__init__()
+        self.solver = solver
+        self.steps = steps
         self.clf = self._init_clf(**kwargs)
                 
     def fit(self, pos_X: Tensor, neg_X_or_labels: Tensor) -> 'BaseODESteer':
@@ -30,7 +38,7 @@ class BaseODESteer(Steer):
             func = lambda t, state: self.vector_field(state), 
             y0 = X, 
             t = torch.tensor([0., T], device = X.device), 
-            method = 'euler', options = {'step_size': T / 10}
+            method = self.solver, options = {'step_size': T / self.steps}
         )[1]
     
     def vector_field(self, X: Tensor) -> Tensor:

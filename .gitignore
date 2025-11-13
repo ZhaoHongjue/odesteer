@@ -17,6 +17,7 @@ notebooks/
 outputs/
 results/
 ckpts/
+shells/
 
 # Data
 texts/
