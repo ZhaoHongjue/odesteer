@@ -6,6 +6,8 @@ This repository provides code for ODESteer, a novel activation steering approach
 
 [Arxiv](), [Website](https://odesteer.github.io/)
 
+![Thumbnail](assets/thumbnail.png)
+
 ## Installation
 
 ### Prerequisites

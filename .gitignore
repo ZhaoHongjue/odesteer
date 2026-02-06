@@ -25,6 +25,7 @@ activations/
 
 # File
 *.out
-*.png
+# *.png
 *.csv
 *.jsonl
+.DS_Store
