@@ -1,6 +1,6 @@
 # ODESteer: A Unified ODE-Based Steering Framework for LLM Alignment
 
-Official implementation of the paper **"ODESteer: A Unified ODE-Based Steering Framework for LLM Alignment"**.
+Official implementation of the paper **"ODESteer: A Unified ODE-Based Steering Framework for LLM Alignment"** (ICLR 2026)
 
 This repository provides code for ODESteer, a novel activation steering approach based on ordinary differential equations and barrier functions from control theory.
 
