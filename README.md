@@ -4,7 +4,7 @@ Official implementation of the paper **"ODESteer: A Unified ODE-Based Steering F
 
 This repository provides code for ODESteer, a novel activation steering approach based on ordinary differential equations and barrier functions from control theory.
 
-[Arxiv](), [Website](https://odesteer.github.io/)
+[Paper](https://openreview.net/forum?id=CFewUmgIIL), [Website](https://odesteer.github.io/)
 
 ![Thumbnail](assets/thumbnail.png)
 
