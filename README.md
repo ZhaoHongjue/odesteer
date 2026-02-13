@@ -210,7 +210,7 @@ odesteer/
 ```bibtex
 @inproceedings{zhao2026odesteer,
       title={ODESteer: A Unified ODE-Based Steering Framework for LLM Alignment},
-      author={author={Hongjue Zhao* and Haosen Sun* and Jiangtao Kong and
+      author={Hongjue Zhao* and Haosen Sun* and Jiangtao Kong and
                Xiaochang Li and Qineng Wang and Liwei Jiang and Qi Zhu and 
                Tarek F. Abdelzaher and Yejin Choi and Manling Li† and Huajie Shao†},
       booktitle={The Fourteenth International Conference on Learning Representations},
